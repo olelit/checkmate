@@ -1,4 +1,5 @@
 from Objects.gamefield import GameField
+import Objects.color as color
 
 
 def main():
