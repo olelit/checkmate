@@ -5,8 +5,8 @@ import Objects.color as color
 def main():
 
     gamefield = GameField()
-    print(gamefield)
-
+    gamefield.start_game()
+    
     return
 
 
