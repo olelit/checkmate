@@ -1,12 +1,12 @@
-from Objects.gamefield import GameField
-import Objects.color as color
+from app.Classes.gamefield import GameField
 
 
 def main():
 
     gamefield = GameField()
     gamefield.start_game()
-    
+    print('ddd')
+
     return
 
 
