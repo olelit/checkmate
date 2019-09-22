@@ -7,6 +7,7 @@ class Pawn(BaseChess):
         super().__init__(color, x, y)
         self.icons = ('♙', '♟')
         self.first_step = True
+        self.chess_value = 1
 
     def get_steps_area(self):
         output = []
@@ -15,16 +16,13 @@ class Pawn(BaseChess):
             output.append([self.x, self.y + (2 * self.get_side())])
         return output
 
-    def find_beated_step(self, coords, opponent):
-        variants = []
-        output = []
+    def get_variants(self):
         size = self.get_field_size()
-        if self.x - 1 > 0 and self.y - 1 > 0:
-            variants.append([self.x - 1, self.y - 1])
-        if self.x + 1 < size and self.y + 1 < size:
-            variants.append([self.x + 1, self.y + 1])
-        if variants:
-            for item in opponent.checkmate:
-                if [item.x, item.y] in variants:
-                    output.append([item.x, item.y])
-        return output if output != [] else coords
+        variants = []
+        side = self.get_side()
+        y = self.y + side
+        if self.x - 1 > 0 and y > 0:
+            variants.append([self.x - 1, y])
+        if self.x + 1 < size and y < size:
+            variants.append([self.x + 1, y])
+        return variants
